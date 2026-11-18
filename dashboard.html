@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11111B">
+
+    <title>Student Dashboard | PrepTrack</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 28px 18px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0 12px;
+            margin-bottom: 45px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .nav-label {
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 0 12px;
+            margin-bottom: 13px;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 14px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            color: white;
+            background: rgba(139, 92, 246, 0.16);
+        }
+
+        .sidebar-nav a.active {
+            border-left: 3px solid var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 17px;
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Main content */
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+            padding: 30px 38px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .topbar h2 {
+            font-size: 20px;
+        }
+
+        .topbar p {
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-avatar {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .profile-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .profile-info span {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        /* Welcome */
+
+        .welcome-banner {
+            padding: 30px;
+            border-radius: 18px;
+            background: linear-gradient(120deg, #292044, #1D1D2B);
+            border: 1px solid var(--border);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-banner h1 {
+            font-size: clamp(22px, 3vw, 30px);
+            margin-bottom: 10px;
+        }
+
+        .welcome-banner p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .welcome-tag {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 7px 12px;
+            border-radius: 20px;
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--secondary);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Overview cards */
+
+        .section-heading {
+            font-size: 17px;
+            margin-bottom: 18px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 22px;
+        }
+
+        .stat-icon {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            font-size: 25px;
+            margin-bottom: 6px;
+        }
+
+        .stat-card p {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        /* Lower sections */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 20px;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 22px;
+        }
+
+        .class-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 17px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .class-item:last-child {
+            border-bottom: none;
+        }
+
+        .class-item strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .class-item span {
+            color: var(--text-secondary);
+            font-size: 11px;
+        }
+
+        .class-time {
+            color: var(--secondary);
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .quick-link:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .quick-link-icon {
+            font-size: 20px;
+        }
+
+        .quick-link strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .quick-link span {
+            color: var(--text-secondary);
+            font-size: 10px;
+        }
+
+        .dashboard-footer {
+            color: var(--text-muted);
+            font-size: 11px;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 210px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 16px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .brand {
+                margin-bottom: 18px;
+            }
+
+            .sidebar-nav {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .sidebar-nav a {
+                white-space: nowrap;
+                padding: 10px;
+            }
+
+            .nav-label,
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .main-content {
+                padding: 22px 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+
+            .profile-info {
+                display: none;
+            }
+
+            .welcome-banner {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <a href="index.html" class="brand">
+            PrepTrack<span>.</span>
+        </a>
+
+        <p class="nav-label">MAIN MENU</p>
+
+        <nav class="sidebar-nav">
+
+            <a href="#overview" class="active">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#classes">
+                <span class="nav-icon">▦</span>
+                Today's Classes
+            </a>
+
+            <a href="#timetable">
+                <span class="nav-icon">▤</span>
+                Weekly Timetable
+            </a>
+
+            <a href="#datesheet">
+                <span class="nav-icon">▣</span>
+                Exam Datesheet
+            </a>
+
+            <a href="#syllabus">
+                <span class="nav-icon">▧</span>
+                Syllabus Hub
+            </a>
+
+            <a href="#profile">
+                <span class="nav-icon">◉</span>
+                My Profile
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <nav class="sidebar-nav">
+                <a href="index.html">
+                    <span class="nav-icon">↩</span>
+                    Back to Website
+                </a>
+            </nav>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Dashboard -->
+
+    <main class="main-content" id="overview">
+
+        <header class="topbar">
+
+            <div>
+                <h2>Student Dashboard</h2>
+                <p>Here's your academic overview.</p>
+            </div>
+
+            <div class="profile" id="profile">
+
+                <div class="profile-avatar">S</div>
+
+                <div class="profile-info">
+                    <strong>Student Name</strong>
+                    <span>Student Account</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Welcome Banner -->
+
+        <section class="welcome-banner">
+
+            <h1>Welcome back, Student! 👋</h1>
+
+            <p>
+                Stay organized, keep track of your classes,
+                and make every academic day count.
+            </p>
+
+            <span class="welcome-tag">
+                ✨ Your academic journey starts here
+            </span>
+
+        </section>
+
+
+        <!-- Academic Overview -->
+
+        <h2 class="section-heading">Academic Overview</h2>
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">📚</div>
+                <h3>--</h3>
+                <p>Total Subjects</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🗓️</div>
+                <h3>--</h3>
+                <p>Classes Today</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <h3>--</h3>
+                <p>Current Semester</p>
+            </div>
+
+        </section>
+
+
+        <!-- Classes and Quick Links -->
+
+        <section class="content-grid">
+
+            <div class="content-card" id="classes">
+
+                <h2 class="section-heading">Today's Classes</h2>
+
+                <div class="class-item">
+                    <div>
+                        <strong>Schedule Preview</strong>
+                        <span>Subject and classroom details will appear here</span>
+                    </div>
+                    <span class="class-time">--:--</span>
+                </div>
+
+                <div class="class-item">
+                    <div>
+                        <strong>Schedule Preview</strong>
+                        <span>Subject and classroom details will appear here</span>
+                    </div>
+                    <span class="class-time">--:--</span>
+                </div>
+
+                <div class="class-item">
+                    <div>
+                        <strong>Schedule Preview</strong>
+                        <span>Subject and classroom details will appear here</span>
+                    </div>
+                    <span class="class-time">--:--</span>
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <h2 class="section-heading">Quick Access</h2>
+
+                <div class="quick-links">
+
+                    <a href="#timetable" class="quick-link">
+                        <span class="quick-link-icon">📅</span>
+                        <div>
+                            <strong>Weekly Timetable</strong>
+                            <span>View your class schedule</span>
+                        </div>
+                    </a>
+
+                    <a href="#datesheet" class="quick-link">
+                        <span class="quick-link-icon">📝</span>
+                        <div>
+                            <strong>Exam Datesheet</strong>
+                            <span>Check upcoming examinations</span>
+                        </div>
+                    </a>
+
+                    <a href="#syllabus" class="quick-link">
+                        <span class="quick-link-icon">📖</span>
+                        <div>
+                            <strong>Syllabus Hub</strong>
+                            <span>Explore your course syllabus</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer class="dashboard-footer">
+            PrepTrack by NEXORA · Your Academics. Your Schedule. Your Success.
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

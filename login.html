@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11111B">
+
+    <title>Login | PrepTrack</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at top left, rgba(139, 92, 246, 0.14), transparent 35%),
+                var(--bg-primary);
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .auth-brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-brand a {
+            color: var(--text-primary);
+            font-size: 30px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .auth-brand span {
+            color: var(--primary);
+        }
+
+        .auth-brand p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .auth-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            padding: 36px;
+        }
+
+        .auth-card h1 {
+            color: var(--text-primary);
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-button);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .password-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 9px;
+        }
+
+        .password-row label {
+            margin-bottom: 0;
+        }
+
+        .forgot-link,
+        .auth-switch a,
+        .back-home {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .forgot-link:hover,
+        .auth-switch a:hover,
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: var(--radius-button);
+            background: var(--primary);
+            color: white;
+            font-family: var(--font-main);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .auth-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .auth-switch {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 24px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .back-home {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 26px 20px;
+            }
+
+            .auth-card h1 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="auth-wrapper">
+
+        <div class="auth-brand">
+            <a href="index.html">PrepTrack<span>.</span></a>
+            <p>Your Academics. Your Schedule. Your Success.</p>
+        </div>
+
+        <section class="auth-card">
+
+            <h1>Welcome Back 👋</h1>
+            <p class="auth-subtitle">
+                Sign in to continue your academic journey.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+
+                    <div class="password-row">
+                        <label for="password">Password</label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Sign In →
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a href="register.html">Create Account</a>
+            </p>
+
+        </section>
+
+        <div class="auth-footer">
+            <a href="index.html" class="back-home">
+                ← Back to Homepage
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>
