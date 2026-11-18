@@ -1,0 +1,211 @@
+
+/* =================================
+   PREPTRACK - RESPONSIVE DESIGN
+================================= */
+
+/* TABLETS AND SMALL LAPTOPS */
+
+@media (max-width: 1024px) {
+
+    .hero-container {
+        gap: 35px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-container {
+        gap: 40px;
+    }
+}
+
+
+/* TABLETS */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        min-height: 70px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 25px 5%;
+        background: #181824;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 5px 0;
+    }
+
+    .nav-links .nav-button {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 75px 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 65px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-badge {
+        margin-bottom: 23px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions,
+    .hero-note {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .about-highlight {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+    }
+}
+
+
+/* MOBILE PHONES */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .section-padding {
+        padding: 70px 0;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 39px;
+        letter-spacing: -1.7px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .preview-card {
+        padding: 19px;
+        transform: none;
+    }
+
+    .preview-header h3 {
+        font-size: 16px;
+    }
+
+    .stat-card {
+        padding: 13px;
+    }
+
+    .stat-card h2 {
+        font-size: 23px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .feature-card {
+        padding: 24px;
+    }
+
+    .section-heading h2,
+    .about-content h2,
+    .cta-content h2 {
+        font-size: 30px;
+    }
+
+    .about-highlight {
+        padding: 38px 20px;
+    }
+
+    .about-highlight h3 {
+        font-size: 23px;
+    }
+
+    .cta-section {
+        padding: 70px 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-right {
+        text-align: left;
+    }
+}
